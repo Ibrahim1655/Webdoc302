@@ -106,12 +106,11 @@ function closeLightbox() {
 }
 
 function updateLightboxImage() {
-    // For now, we'll keep the placeholder
-    // When you add real images, you can update this function to show the actual image
     const currentItem = galleryItems[currentImageIndex];
-    if (currentItem) {
-        // This would be: lightboxImage.innerHTML = currentItem.querySelector('.gallery-image').innerHTML;
-        // For now, keeping placeholder structure
+    const lightboxImage = document.getElementById('lightbox-image');
+    if (currentItem && lightboxImage) {
+        lightboxImage.src = currentItem.src;
+        lightboxImage.alt = currentItem.alt;
     }
 }
 
@@ -175,6 +174,50 @@ if (videoPlaceholder) {
         // const videoWrapper = document.querySelector('.video-wrapper');
         // videoWrapper.innerHTML = '<iframe src="YOUR_VIDEO_URL" frameborder="0" allowfullscreen></iframe>';
         alert('Cliquez pour intégrer votre vidéo d\'interview ici');
+    });
+}
+
+// Articles Tabs System
+const tabButtons = document.querySelectorAll('.tab-button');
+const articleTabs = document.querySelectorAll('.article-tab');
+
+tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const targetTab = button.getAttribute('data-tab');
+        
+        // Remove active class from all buttons and tabs
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        articleTabs.forEach(tab => tab.classList.remove('active'));
+        
+        // Add active class to clicked button and corresponding tab
+        button.classList.add('active');
+        const targetArticle = document.getElementById(targetTab);
+        if (targetArticle) {
+            targetArticle.classList.add('active');
+            // Smooth scroll to top of articles section
+            targetArticle.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
+});
+
+// Scroll to Top Button
+const scrollToTopButton = document.getElementById('scrollToTop');
+if (scrollToTopButton) {
+    // Show/hide button based on scroll position
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            scrollToTopButton.classList.add('visible');
+        } else {
+            scrollToTopButton.classList.remove('visible');
+        }
+    });
+
+    // Scroll to top when clicked
+    scrollToTopButton.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
     });
 }
 

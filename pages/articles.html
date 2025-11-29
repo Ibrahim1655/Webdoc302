@@ -23,6 +23,49 @@
         .nav-menu.active {
             left: 0;
         }
+        .article-tab {
+            display: none;
+        }
+        .article-tab.active {
+            display: block;
+        }
+        .tab-button {
+            transition: all 0.3s ease;
+        }
+        .tab-button.active {
+            background-color: black;
+            color: white;
+        }
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: black;
+            color: white;
+            border: 2px solid white;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .scroll-to-top.visible {
+            display: flex;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .scroll-to-top:hover {
+            background-color: white;
+            color: black;
+            border-color: black;
+            transform: translateY(-5px);
+        }
     </style>
 </head>
 <body class="font-sans text-black bg-white overflow-x-hidden">
@@ -30,7 +73,9 @@
     <nav class="fixed top-0 w-full bg-white z-50 py-5 border-b border-black transition-shadow" id="navbar">
         <div class="max-w-7xl mx-auto px-5 flex justify-between items-center">
             <div class="text-2xl font-bold tracking-wider">
-                <a href="../index.html" class="no-underline text-black inline-block">ONE<span class="text-white bg-black px-2 ml-1">GOAL</span></a>
+                <a href="../index.html" class="no-underline text-black inline-block">
+                    <img src="../assets/images/logo.png" alt="OneGoal" class="h-14 md:h-16 object-contain">
+                </a>
             </div>
             <ul class="hidden md:flex list-none gap-8 flex-wrap">
                 <li><a href="../index.html" class="no-underline text-black font-medium uppercase text-sm tracking-wide relative hover:after:w-full after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-300">Accueil</a></li>
@@ -38,6 +83,7 @@
                 <li><a href="articles.html" class="no-underline text-black font-medium uppercase text-sm tracking-wide relative hover:after:w-full after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-300">Articles</a></li>
                 <li><a href="interview.html" class="no-underline text-black font-medium uppercase text-sm tracking-wide relative hover:after:w-full after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-300">Interview</a></li>
                 <li><a href="galerie.html" class="no-underline text-black font-medium uppercase text-sm tracking-wide relative hover:after:w-full after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-300">Galerie</a></li>
+                <li><a href="contexte.html" class="no-underline text-black font-medium uppercase text-sm tracking-wide relative hover:after:w-full after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-300">Contexte</a></li>
             </ul>
             <div class="md:hidden flex flex-col gap-1.5 cursor-pointer hamburger">
                 <span class="w-6 h-0.5 bg-black transition-all"></span>
@@ -50,6 +96,7 @@
                 <li><a href="articles.html" class="no-underline text-black font-medium uppercase text-sm tracking-wide">Articles</a></li>
                 <li><a href="interview.html" class="no-underline text-black font-medium uppercase text-sm tracking-wide">Interview</a></li>
                 <li><a href="galerie.html" class="no-underline text-black font-medium uppercase text-sm tracking-wide">Galerie</a></li>
+                <li><a href="contexte.html" class="no-underline text-black font-medium uppercase text-sm tracking-wide">Contexte</a></li>
             </ul>
         </div>
     </nav>
@@ -65,44 +112,211 @@
     <!-- Articles Section -->
     <section class="py-24 min-h-screen flex flex-col justify-center bg-white">
         <div class="max-w-7xl mx-auto px-5">
-            <div class="flex flex-col gap-20">
-                <article class="grid md:grid-cols-[1fr_1.5fr] gap-16 items-start">
-                    <div class="w-full h-96 bg-gray-100 border-2 border-black overflow-hidden">
-                        <div class="w-full h-full flex items-center justify-center">
-                            <div class="text-2xl font-light text-gray-600 tracking-widest">IMAGE</div>
+            <!-- Tabs Navigation -->
+            <div class="mb-12 border-b-2 border-black">
+                <div class="flex flex-wrap gap-4">
+                    <button class="tab-button active px-6 py-3 uppercase text-sm font-semibold tracking-widest border-2 border-black bg-white text-black hover:bg-gray-100" data-tab="article-1">
+                        Le Cimetière des Rêves
+                    </button>
+                    <button class="tab-button px-6 py-3 uppercase text-sm font-semibold tracking-widest border-2 border-black bg-white text-black hover:bg-gray-100" data-tab="article-2">
+                        Deuxième École
+                    </button>
+                    <button class="tab-button px-6 py-3 uppercase text-sm font-semibold tracking-widest border-2 border-black bg-white text-black hover:bg-gray-100" data-tab="article-3">
+                        Modèle Français
+                    </button>
+                </div>
+            </div>
+            
+            <div class="flex flex-col gap-10">
+                <article id="article-1" class="article-tab active border-2 border-black bg-[#faf8f2] p-8 flex flex-col gap-10">
+                    <div class="relative h-[420px] overflow-hidden rounded-sm border-2 border-black bg-gradient-to-br from-indigo-900 via-slate-900 to-black">
+                        <div class="absolute inset-0" style="background-image:url('../assets/images/page_stage01.jpg'); background-size:cover; background-position:center; opacity:0.4;"></div>
+                        <div class="absolute inset-0 bg-black/50"></div>
+                        <div class="relative z-10 flex flex-col h-full justify-between p-6 text-white">
+                            <div class="text-sm uppercase tracking-[0.4em] text-slate-200">Reportage</div>
+                            <div>
+                                <h3 class="text-3xl md:text-4xl font-black uppercase leading-tight tracking-wide">Le Cimetière des Rêves : Quand le football francilien broie ses enfants</h3>
+                            </div>
+                            <div>
+                                <p class="text-sm uppercase tracking-widest text-slate-200">L'éclairage cru d'une mécanique qui épuise les espoirs à l'ombre des projecteurs.</p>
+                                <p class="text-sm uppercase tracking-widest text-slate-300 mt-2">Par DRAME Ibrahim</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="flex flex-col gap-4">
-                        <h3 class="text-2xl md:text-3xl font-bold uppercase tracking-wide text-black leading-tight">Les fondamentaux du gardien de but moderne</h3>
-                        <p class="text-sm font-semibold text-gray-600 uppercase tracking-widest">15 Janvier 2024</p>
-                        <p class="text-base leading-loose text-gray-600">Le rôle du gardien de but a considérablement évolué ces dernières années. Aujourd'hui, un gardien doit maîtriser non seulement les techniques de base comme les plongées et les sorties aériennes, mais aussi le jeu au pied et la construction du jeu depuis l'arrière. Cet article explore les compétences essentielles que tout gardien moderne doit développer pour exceller à son poste.</p>
-                        <p class="text-base leading-loose text-gray-600">L'entraînement spécifique devient crucial pour développer ces compétences multiples. Les gardiens doivent consacrer du temps à chaque aspect de leur jeu, tout en maintenant une condition physique optimale pour répondre aux exigences du football moderne.</p>
+                    <div class="space-y-10">
+                        <div class="grid md:grid-cols-[1.4fr_0.9fr] gap-8">
+                            <div class="space-y-6 text-gray-700 text-lg leading-relaxed">
+                                <p>En Île-de-France, la plus grande usine à champions du monde tourne à plein régime. Mais pour un Mbappé qui touche les étoiles, combien de milliers de gamins finissent sur le carreau, « pulvérisés mentalement » avant même leur majorité ? Plongée dans l'angle mort du football français, là où les promesses de gloire se transforment en silence et en petits boulots.</p>
+                                <p>C'est une scène qui se répète chaque week-end, de Sarcelles à Trappes : des pères hurlent des consignes tactiques à des enfants de dix ans, des « agents » autoproclamés distribuent des cartes de visite froissées, des gamins jouent leur vie sur un contrôle orienté. Ici, on ne joue pas seulement au ballon : on joue pour s'en sortir. L'Île-de-France est devenue le « deuxième pays du football » après le Brésil, un vivier inépuisable scruté par l'Europe entière, mais derrière la vitrine étincelante des réussites planétaires se cache un cimetière silencieux d'espoirs déçus.</p>
+                                <p>La mécanique du gâchis, les témoignages brisés et l'écosystème toxique qui entoure ces jeunes font partie de l'autre visage du football : celui d'une industrie extractive qui recycle l'espoir en déchets humains.</p>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="border border-black bg-white p-5 rounded-sm">
+                                    <p class="text-xs uppercase tracking-widest text-gray-500">Structures d'élite</p>
+                                    <p class="text-3xl font-black text-black">980 / an</p>
+                                    <p class="text-sm text-gray-600">Jeunes intégrant les centres d'entraînement d'élite, extraits de plus de deux millions de licenciés.</p>
+                                </div>
+                                <div class="border border-black bg-white p-5 rounded-sm">
+                                    <p class="text-xs uppercase tracking-widest text-gray-500">Contrats pros</p>
+                                    <p class="text-3xl font-black text-black">18%</p>
+                                    <p class="text-sm text-gray-600">À peine 18 % signeront un contrat professionnel ; les autres repartent sans diplôme.</p>
+                                </div>
+                                <div class="border border-black bg-white p-5 rounded-sm">
+                                    <p class="text-xs uppercase tracking-widest text-gray-500">Sortie des centres</p>
+                                    <p class="text-3xl font-black text-black">Petits boulots</p>
+                                    <p class="text-sm text-gray-600">VTC, livreur, National 2/3 : la chute sociale commence souvent dans une berline de location.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-y-8">
+                            <section class="border border-black bg-white p-6 rounded-sm shadow-sm space-y-4">
+                                <div class="text-xs uppercase tracking-[0.4em] text-gray-500">I. La mécanique du gâchis</div>
+                                <h4 class="text-2xl font-bold uppercase text-black">La mécanique du gâchis</h4>
+                                <p>Pour comprendre la violence du système, il faut oublier les millions d'euros et regarder les chiffres en face. Chaque année, environ 980 jeunes intègrent les structures de formation d'élite en France, sélectionnés parmi plus de deux millions de licenciés. Même pour cette crème de la crème, la porte reste désespérément close : à peine 18 % signeront un jour un contrat professionnel.</p>
+                                <p>Pour plus de huit jeunes sur dix, l'aventure s'arrête net : pas de gloire, pas de millions, juste un retour brutal à la case départ, souvent sans diplôme et sans plan B. Cette industrie fonctionne au « déchet » : pour trouver la pépite, il faut statistiquement briser des milliers d'autres trajectoires.</p>
+                            </section>
+                            <section class="border border-black bg-white p-6 rounded-sm shadow-sm space-y-4">
+                                <div class="text-xs uppercase tracking-[0.4em] text-gray-500">II. Témoignage</div>
+                                <h4 class="text-2xl font-bold uppercase text-black">« J'ai 15 ans et je suis pulvérisé mentalement »</h4>
+                                <p>Le choc survient au printemps, lors des entretiens de fin de saison. En quelques minutes, des années de sacrifices sont balayées par une phrase standardisée : « Nous ne te conservons pas. » Pour les adolescents enfermés dans les centres, coupés de leur famille et de la « vraie vie », c'est une petite mort sociale.</p>
+                                <blockquote class="border-l-4 border-black pl-4 text-gray-600 italic">« J'ai 15 ans et je suis pulvérisé mentalement. Mon rêve est brisé et mon esprit avec. »</blockquote>
+                                <p>Des histoires comme celles de Sidikaba, ancien espoir nantais devenu sans-abri, ou Gara Dembélé, prodige de Clairefontaine perdu dans l'indiscipline et les transferts douteux, rappellent que le talent n'offre aucune protection.</p>
+                            </section>
+                            <section class="border border-black bg-white p-6 rounded-sm shadow-sm space-y-4">
+                                <div class="text-xs uppercase tracking-[0.4em] text-gray-500">III. La foire aux illusions</div>
+                                <h4 class="text-2xl font-bold uppercase text-black">Parents et prédateurs</h4>
+                                <p>En Île-de-France, le football est parfois perçu comme un ticket de loterie : les familles y investissent des sommes folles, persuadées d'avoir engendré le prochain Mbappé. La pression mentale devient insoutenable, la violence verbale ou physique envers éducateurs et arbitres s'intensifie, révélant une attente démesurée.</p>
+                                <p>Quand la famille ne suffit plus, les prédateurs prennent le relais. Sur les réseaux sociaux ou autour des stades, de faux agents repèrent un gamin recalé et lui vendent un essai miracle en Europe de l'Est ou en Angleterre contre des milliers d'euros. Des escrocs comme « Guillaume », auteur de dizaines de tests bidons, prospèrent sur la misère affective et l'espoir irrationnel des parents.</p>
+                            </section>
+                            <section class="border border-black bg-white p-6 rounded-sm shadow-sm space-y-4">
+                                <div class="text-xs uppercase tracking-[0.4em] text-gray-500">IV. L'après-sélection</div>
+                                <h4 class="text-2xl font-bold uppercase text-black">De l'aile droite au siège passager d'une VTC</h4>
+                                <p>Une fois le portail du centre refermé, certains restent dans le foot amateur ou enchaînent les National 2 et 3 avec des salaires de misère dans l'attente d'une repêche. D'autres partent mercenaires vers Chypre ou la Bulgarie, découvrant la précarité de contrats opaques.</p>
+                                <p>Mais pour une majorité, la chute sociale est brutale : reconversion massive vers la livraison ou la conduite VTC. Ces métiers offrent une illusion d'indépendance et des horaires flexibles pour continuer à s'entraîner, tout en correspondant à des compétences adaptées à leur quotidien.</p>
+                                <p>C'est l'ultime paradoxe du football francilien : il promettait des stades pleins, il offre trop souvent la solitude d'un habitacle de location et des dettes morales impossibles à rembourser.</p>
+                            </section>
+                        </div>
+                        <div class="border border-black bg-black text-white p-6 rounded-sm">
+                            <p class="text-sm uppercase tracking-[0.5em] text-gray-300">Conclusion</p>
+                            <p class="text-base leading-relaxed font-medium">Le cimetière des rêves se remplit silencieusement, tandis qu'une poignée de stars irrigue la vitrine médiatique. À Sarcelles comme à Trappes, le football attire pourtant des milliers de gamins prêts à jouer leur avenir sur un contrôle, souvent sans plan B : c'est la face cachée d'une industrie qui broie ses enfants.</p>
+                        </div>
                     </div>
                 </article>
-                <article class="grid md:grid-cols-[1fr_1.5fr] gap-16 items-start">
-                    <div class="w-full h-96 bg-gray-100 border-2 border-black overflow-hidden">
-                        <div class="w-full h-full flex items-center justify-center">
-                            <div class="text-2xl font-light text-gray-600 tracking-widest">IMAGE</div>
+
+                <!-- Nouvel Article -->
+                <article id="article-2" class="article-tab border-2 border-black bg-[#faf8f2] p-8 flex flex-col gap-10">
+                    <div class="relative h-[420px] overflow-hidden rounded-sm border-2 border-black bg-gradient-to-br from-slate-800 via-gray-900 to-black">
+                        <div class="absolute inset-0" style="background-image:url('../assets/images/fond1.jpg'); background-size:cover; background-position:center; opacity:0.3;"></div>
+                        <div class="absolute inset-0 bg-black/60"></div>
+                        <div class="relative z-10 flex flex-col h-full justify-between p-6 text-white">
+                            <div class="text-sm uppercase tracking-[0.4em] text-slate-200">Témoignage</div>
+                            <div>
+                                <h3 class="text-3xl md:text-4xl font-black uppercase leading-tight tracking-wide">Les clubs sportifs d'Île-de-France, une deuxième école pour les jeunes</h3>
+                                <p class="text-lg md:text-xl font-light mt-3 text-slate-200">Le football en Île-de-France : l'autre école de la République</p>
+                            </div>
+                            <p class="text-sm uppercase tracking-widest text-slate-300">Par CHOUDJAY Dylan</p>
                         </div>
                     </div>
-                    <div class="flex flex-col gap-4">
-                        <h3 class="text-2xl md:text-3xl font-bold uppercase tracking-wide text-black leading-tight">La préparation mentale : clé de la performance</h3>
-                        <p class="text-sm font-semibold text-gray-600 uppercase tracking-widest">10 Janvier 2024</p>
-                        <p class="text-base leading-loose text-gray-600">La dimension mentale du gardien de but est souvent sous-estimée, pourtant elle représente un pilier fondamental de la performance. La gestion du stress, la concentration et la confiance en soi sont autant d'éléments qui font la différence entre un bon gardien et un excellent gardien.</p>
-                        <p class="text-base leading-loose text-gray-600">Cet article détaille les techniques de préparation mentale utilisées par les professionnels, ainsi que des exercices pratiques que vous pouvez intégrer dans votre routine quotidienne pour renforcer votre mental et améliorer vos performances sur le terrain.</p>
+                    <div class="space-y-10">
+                        <div class="grid md:grid-cols-[1.4fr_0.9fr] gap-8">
+                            <div class="space-y-6 text-gray-700 text-lg leading-relaxed">
+                                <p>En Île-de-France, beaucoup de jeunes comme moi ont grandi sur les terrains de foot. Là-bas, on n'a pas juste appris à faire des passes. On a appris à respecter, à écouter, à se relever après un tacle. Parce que parfois, c'est le club qui t'éduque.</p>
+                                <p>Je viens d'une ville tranquille, Oissery. Mais à l'adolescence, le calme peut vite devenir un vide angoissant. Il n'était pas toujours facile de trouver un repère, un endroit où l'on se sentait exister. Pour moi, comme pour beaucoup d'autres, cet endroit c'était mon club de foot. Dès que je franchissais la grille du stade, les soucis de l'école ou de la maison restaient dehors. Seul comptait le bruit des crampons, cette odeur unique de terre et de sueur.</p>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="border border-black bg-white p-5 rounded-sm">
+                                    <p class="text-xs uppercase tracking-widest text-gray-500">Licenciés IDF</p>
+                                    <p class="text-3xl font-black text-black">270 000</p>
+                                    <p class="text-sm text-gray-600">Gamins qui foulent les pelouses chaque week-end en Île-de-France.</p>
+                                </div>
+                                <div class="border border-black bg-white p-5 rounded-sm">
+                                    <p class="text-xs uppercase tracking-widest text-gray-500">Vivier mondial</p>
+                                    <p class="text-2xl font-bold text-black">N°1</p>
+                                    <p class="text-sm text-gray-600">Plus grand vivier de football au monde, devant São Paulo.</p>
+                                </div>
+                                <div class="border border-black bg-white p-5 rounded-sm">
+                                    <p class="text-xs uppercase tracking-widest text-gray-500">Insertion sociale</p>
+                                    <p class="text-2xl font-bold text-black">+ Réussite</p>
+                                    <p class="text-sm text-gray-600">Un jeune inscrit en club a plus de chances de réussir son insertion.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-y-8">
+                            <section class="border border-black bg-white p-6 rounded-sm shadow-sm space-y-4">
+                                <div class="text-xs uppercase tracking-[0.4em] text-gray-500">I. La "rage" parisienne</div>
+                                <h4 class="text-2xl font-bold uppercase text-black">Une fabrique de caractères</h4>
+                                <p>Mon histoire, c'est celle de toute une génération. L'Île-de-France n'est pas seulement la région capitale, c'est le plus grand vivier de football au monde, devant même São Paulo. Mais derrière les stars qui brillent à la télé, derrière les Mbappé ou Kanté, il y a la réalité brute de 270 000 licenciés qui foulent les pelouses chaque week-end.</p>
+                                <p>Ici, le football est plus qu'un sport : c'est un langage universel et une école de la dureté. Sur les terrains synthétiques usés, on apprend très tôt ce qu'est la "rage" : cette envie de s'en sortir, de ne rien lâcher. Seul le talent et l'effort parlent.</p>
+                            </section>
+                            <section class="border border-black bg-white p-6 rounded-sm shadow-sm space-y-4">
+                                <div class="text-xs uppercase tracking-[0.4em] text-gray-500">II. L'éducateur</div>
+                                <h4 class="text-2xl font-bold uppercase text-black">Ce père de substitution</h4>
+                                <p>Mais ce système ne tiendrait pas une seconde sans une figure centrale, souvent héroïque : l'éducateur. Pour moi, le coach n'est pas là juste pour poser des plots ou expliquer le hors-jeu. C'est un grand frère, un confident, parfois un père pour ceux dont le foyer est brisé.</p>
+                                <p>Je me souviens de ces hommes qui, après leur journée de travail, venaient nous entraîner sous la pluie, dans le froid de novembre. Ils nous engueulaient quand on arrivait en retard et vérifiaient nos bulletins scolaires avant de nous laisser jouer.</p>
+                                <blockquote class="border-l-4 border-black pl-4 text-gray-600 italic">« Le foot, c'est l'appât pour les faire venir, mais l'éducation, c'est le vrai match. »</blockquote>
+                                <p>Les chiffres le prouvent : un jeune inscrit en club a plus de chances de réussir son insertion sociale. Pourquoi ? Parce qu'il a intégré des règles. Il a compris que sans le collectif, l'individu ne vaut rien. Il a appris à gérer l'injustice d'une décision arbitrale sans violence. Ces leçons-là, apprises dès le plus jeune âge sur un terrain gelé, valent tous les diplômes de management.</p>
+                            </section>
+                            <section class="border border-black bg-white p-6 rounded-sm shadow-sm space-y-4">
+                                <div class="text-xs uppercase tracking-[0.4em] text-gray-500">III. Un refuge vital</div>
+                                <h4 class="text-2xl font-bold uppercase text-black">Sous pression</h4>
+                                <p>Pourtant, ce "miracle" social est fragile. Nos clubs survivent souvent avec des bouts de ficelle. Les subventions baissent, les minibus tombent en panne, les douches sont parfois froides. Mais l'âme, elle, reste incandescente. Le club de foot en Île-de-France, c'est le lieu où l'on répare les vivants. On y transforme la colère en énergie, la frustration en but.</p>
+                                <p>Quand la société renvoie parfois une image négative de la jeunesse de banlieue, le club offre une fierté. Porter le maillot de sa ville, c'est porter son identité, la défendre, la respecter. C'est appartenir à une tribu bienveillante qui ne te laissera pas tomber si tu te blesses.</p>
+                            </section>
+                        </div>
+                        <div class="border border-black bg-black text-white p-6 rounded-sm">
+                            <p class="text-sm uppercase tracking-[0.5em] text-gray-300">Conclusion</p>
+                            <p class="text-base leading-relaxed font-medium">Aujourd'hui, quand je regarde en arrière, je ne vois pas les victoires ou les défaites. Je vois les mains tendues. Je vois cette deuxième famille qui m'a construit. Je réalise que l'adulte que je suis devenu doit tout à l'enfant qui courait derrière ce ballon.</p>
+                            <p class="text-sm text-gray-400 mt-4 italic">Regardez cette photo, juste en dessous. C'était il y a quelques années, dans mon club formateur. Ce petit garçon au maillot trop grand et au regard déterminé, c'est moi. Et tout ce que je viens de raconter, il l'a vécu là-bas, sur ce terrain.</p>
+                        </div>
                     </div>
                 </article>
-                <article class="grid md:grid-cols-[1fr_1.5fr] gap-16 items-start">
-                    <div class="w-full h-96 bg-gray-100 border-2 border-black overflow-hidden">
-                        <div class="w-full h-full flex items-center justify-center">
-                            <div class="text-2xl font-light text-gray-600 tracking-widest">IMAGE</div>
+
+                <!-- Nouvel Article CHUPIN Nathan -->
+                <article id="article-3" class="article-tab border-2 border-black bg-[#faf8f2] p-8 flex flex-col gap-10">
+                    <div class="relative h-[420px] overflow-hidden rounded-sm border-2 border-black bg-gradient-to-br from-blue-900 via-indigo-900 to-black">
+                        <div class="absolute inset-0" style="background-image:url('../assets/images/fond3.jpg'); background-size:cover; background-position:center; opacity:0.3;"></div>
+                        <div class="absolute inset-0 bg-black/60"></div>
+                        <div class="relative z-10 flex flex-col h-full justify-between p-6 text-white">
+                            <div class="text-sm uppercase tracking-[0.4em] text-slate-200">Analyse</div>
+                            <div>
+                                <h3 class="text-3xl md:text-4xl font-black uppercase leading-tight tracking-wide">Quels sont les éléments du modèle français de formation qui expliquent sa réussite par rapport à d'autres nations du football ?</h3>
+                            </div>
+                            <p class="text-sm uppercase tracking-widest text-slate-300">Par CHUPIN Nathan</p>
                         </div>
                     </div>
-                    <div class="flex flex-col gap-4">
-                        <h3 class="text-2xl md:text-3xl font-bold uppercase tracking-wide text-black leading-tight">Nutrition et récupération pour gardiens</h3>
-                        <p class="text-sm font-semibold text-gray-600 uppercase tracking-widest">5 Janvier 2024</p>
-                        <p class="text-base leading-loose text-gray-600">Une alimentation adaptée et une récupération optimale sont essentielles pour maintenir un niveau de performance élevé tout au long de la saison. Les gardiens de but ont des besoins nutritionnels spécifiques liés à leur position unique sur le terrain.</p>
-                        <p class="text-base leading-loose text-gray-600">Découvrez dans cet article les stratégies nutritionnelles et les protocoles de récupération qui permettent aux gardiens de haut niveau de rester performants et de réduire les risques de blessure, même avec un calendrier chargé.</p>
+                    <div class="space-y-10">
+                        <div class="text-gray-700 text-lg leading-relaxed">
+                            <p>Depuis plusieurs décennies, la France s'impose comme l'un des pays les plus performants dans la formation de footballeurs de haut niveau.</p>
+                        </div>
+                        <div class="space-y-8">
+                            <section class="border border-black bg-white p-6 rounded-sm shadow-sm space-y-4">
+                                <div class="text-xs uppercase tracking-[0.4em] text-gray-500">I. Les centres de formation</div>
+                                <h4 class="text-2xl font-bold uppercase text-black">Leur structuration très encadrée</h4>
+                                <p>La France dispose d'un réseau de centres de formation reconnu comme l'un des meilleurs au monde. Ces centres suivent un cahier des charges strict imposé par la FFF (Fédération Football Française) et la LFP (Ligue Française Professionnelle) : infrastructure de qualité, encadrement technique diplômé, suivi scolaire obligatoire. L'objectif est de former des joueurs complets, autant sur le plan sportif que personnel.</p>
+                                <p>L'Institut National du Football (INF) de Clairefontaine est un symbole de l'excellence formation française. Il sert de modèle à l'ensemble des académies françaises : sélection rigoureuse, formation individualisée, grande exigence tactique et technique. Beaucoup de joueurs professionnels y sont passés ou ont bénéficié de sa méthodologie.</p>
+                            </section>
+                            <section class="border border-black bg-white p-6 rounded-sm shadow-sm space-y-4">
+                                <div class="text-xs uppercase tracking-[0.4em] text-gray-500">II. Détection précoce</div>
+                                <h4 class="text-2xl font-bold uppercase text-black">Le maillage territorial</h4>
+                                <p>Le réseau de détection français est extrêmement dense : des milliers d'éducateurs certifiés, des clubs amateurs partenaires, des sections sportives dans les collèges et lycées, des pôles espoirs dans chaque région. Ce maillage permet de repérer très tôt les talents, même dans des zones moins favorisées.</p>
+                            </section>
+                            <section class="border border-black bg-white p-6 rounded-sm shadow-sm space-y-4">
+                                <div class="text-xs uppercase tracking-[0.4em] text-gray-500">III. Technique et intelligence</div>
+                                <h4 class="text-2xl font-bold uppercase text-black">La priorité donnée à la technique et à l'intelligence de jeu</h4>
+                                <p>Contrairement à certains pays qui privilégient la puissance ou l'intensité, la France s'est longtemps concentrée sur la maîtrise technique. C'est ce qui explique l'émergence de profils comme Benzema, Griezmann, Zidane ou Mbappé et Dembélé.</p>
+                                <p>De plus, les jeunes joueurs français sont régulièrement confrontés à des compétitions exigeantes : U17, U19 Nationaux, Gambardella, Youth League pour les clubs européens... Cette exposition permet de développer leur maturité et leur capacité à gérer la pression.</p>
+                                <p>Enfin, la France bénéficie d'un vivier très large, favorisé par une grande diversité culturelle, sociale et géographique. Cette diversité produit des profils variés, explosifs, techniques, athlétiques qui enrichissent le jeu français et permettent de renouveler tout le temps les talents.</p>
+                            </section>
+                            <section class="border border-black bg-white p-6 rounded-sm shadow-sm space-y-4">
+                                <div class="text-xs uppercase tracking-[0.4em] text-gray-500">IV. Modernisation</div>
+                                <h4 class="text-2xl font-bold uppercase text-black">Une modernisation continue du modèle</h4>
+                                <p>Enfin, la formation française n'est pas figée. Depuis la fin des années 1980, puis après 2010, la FFF a régulièrement modernisé ses méthodes : nouvelles pédagogies, introduction de la data, meilleure prise en compte de la préparation mentale, optimisation de la charge d'entraînement. Cette capacité à s'adapter explique en grande partie la constance de la France au plus haut niveau.</p>
+                            </section>
+                        </div>
+                        <div class="border border-black bg-gray-100 p-4 rounded-sm">
+                            <p class="text-xs uppercase tracking-widest text-gray-500 mb-2">Sources principales</p>
+                            <p class="text-sm text-gray-600">FFF.fr, UEFA.com</p>
+                        </div>
                     </div>
                 </article>
             </div>
@@ -112,10 +326,19 @@
     <!-- Footer -->
     <footer class="bg-black text-white py-10 border-t border-white">
         <div class="max-w-7xl mx-auto px-5 text-center">
-            <div class="text-2xl font-bold tracking-wider mb-5">ONE<span class="text-black bg-white px-2 ml-1">GOAL</span></div>
+            <div class="mb-5">
+                <img src="../assets/images/onegoal_blanc.png" alt="OneGoal" class="h-12 md:h-14 object-contain mx-auto">
+            </div>
             <p>&copy; 2024 OneGoal. Tous droits réservés.</p>
         </div>
     </footer>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" id="scrollToTop" aria-label="Remonter en haut">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+    </button>
 
     <script src="../js/script.js"></script>
 </body>

@@ -30,7 +30,9 @@
     <nav class="fixed top-0 w-full bg-white z-50 py-5 border-b border-black transition-shadow" id="navbar">
         <div class="max-w-7xl mx-auto px-5 flex justify-between items-center">
             <div class="text-2xl font-bold tracking-wider">
-                <a href="../index.html" class="no-underline text-black inline-block">ONE<span class="text-white bg-black px-2 ml-1">GOAL</span></a>
+                <a href="../index.html" class="no-underline text-black inline-block">
+                    <img src="../assets/images/logo.png" alt="OneGoal" class="h-14 md:h-16 object-contain">
+                </a>
             </div>
             <ul class="hidden md:flex list-none gap-8 flex-wrap">
                 <li><a href="../index.html" class="no-underline text-black font-medium uppercase text-sm tracking-wide relative hover:after:w-full after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-300">Accueil</a></li>
@@ -38,6 +40,7 @@
                 <li><a href="articles.html" class="no-underline text-black font-medium uppercase text-sm tracking-wide relative hover:after:w-full after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-300">Articles</a></li>
                 <li><a href="interview.html" class="no-underline text-black font-medium uppercase text-sm tracking-wide relative hover:after:w-full after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-300">Interview</a></li>
                 <li><a href="galerie.html" class="no-underline text-black font-medium uppercase text-sm tracking-wide relative hover:after:w-full after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-300">Galerie</a></li>
+                <li><a href="contexte.html" class="no-underline text-black font-medium uppercase text-sm tracking-wide relative hover:after:w-full after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-300">Contexte</a></li>
             </ul>
             <div class="md:hidden flex flex-col gap-1.5 cursor-pointer hamburger">
                 <span class="w-6 h-0.5 bg-black transition-all"></span>
@@ -50,6 +53,7 @@
                 <li><a href="articles.html" class="no-underline text-black font-medium uppercase text-sm tracking-wide">Articles</a></li>
                 <li><a href="interview.html" class="no-underline text-black font-medium uppercase text-sm tracking-wide">Interview</a></li>
                 <li><a href="galerie.html" class="no-underline text-black font-medium uppercase text-sm tracking-wide">Galerie</a></li>
+                <li><a href="contexte.html" class="no-underline text-black font-medium uppercase text-sm tracking-wide">Contexte</a></li>
             </ul>
         </div>
     </nav>
@@ -63,21 +67,30 @@
     </section>
 
     <!-- Interview Video Section -->
-    <section class="py-24 min-h-screen flex flex-col justify-center bg-black text-white">
-        <div class="max-w-7xl mx-auto px-5">
+    <section class="py-24 min-h-screen flex flex-col justify-center bg-black text-white relative overflow-hidden">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 opacity-20" style="background-image: url('../assets/images/fond2.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;"></div>
+        <div class="absolute inset-0 bg-black/60"></div>
+        
+        <div class="max-w-7xl mx-auto px-5 relative z-10">
+            <div class="mb-16 text-center">
+                <div class="text-sm uppercase tracking-[0.4em] text-white/60 mb-4">Interview</div>
+                <h2 class="text-3xl md:text-5xl font-black uppercase tracking-widest text-white mb-6">LE COACH</h2>
+                <p class="text-lg md:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
+                    Rencontre avec l'entraîneur des gardiens. Parcours, méthodes et vision du perfectionnement.
+                </p>
+            </div>
+            
             <div class="grid md:grid-cols-[1.2fr_1fr] gap-16 items-center">
                 <div class="relative w-full" style="padding-bottom: 56.25%;">
-                    <div class="absolute top-0 left-0 w-full h-full bg-gray-900 border-2 border-white overflow-hidden flex items-center justify-center cursor-pointer hover:bg-gray-800 transition-colors duration-300 video-placeholder">
-                        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 transition-transform duration-300 hover:scale-110 play-button">
-                            <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
-                                <circle cx="40" cy="40" r="40" fill="white"/>
-                                <path d="M32 24L32 56L56 40L32 24Z" fill="black"/>
-                            </svg>
-                        </div>
-                        <div class="absolute bottom-5 left-1/2 transform -translate-x-1/2 z-0">
-                            <p class="text-lg font-semibold tracking-widest text-white uppercase">VIDÉO INTERVIEW</p>
-                        </div>
-                    </div>
+                    <iframe 
+                        src="https://player.vimeo.com/video/1141529184?title=0&byline=0&portrait=0&color=ffffff" 
+                        frameborder="0" 
+                        allow="autoplay; fullscreen; picture-in-picture" 
+                        allowfullscreen
+                        class="absolute top-0 left-0 w-full h-full"
+                        style="min-height: 400px;">
+                    </iframe>
                 </div>
                 <div class="flex flex-col gap-5">
                     <h3 class="text-2xl md:text-3xl font-bold uppercase tracking-wide text-white">Rencontre avec nos entraîneurs</h3>
@@ -88,10 +101,43 @@
         </div>
     </section>
 
+    <!-- Interview Joueurs Section -->
+    <section class="py-24 min-h-screen flex flex-col justify-center bg-white text-black relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-5 relative z-10">
+            <div class="mb-16 text-center">
+                <div class="text-sm uppercase tracking-[0.4em] text-gray-500 mb-4">Interview</div>
+                <h2 class="text-3xl md:text-5xl font-black uppercase tracking-widest text-black mb-6">LES JOUEURS</h2>
+                <p class="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
+                    Témoignages des gardiens de but. Leurs expériences, leurs défis et leur vision du stage.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-[1fr_1.2fr] gap-16 items-center">
+                <div class="flex flex-col gap-5">
+                    <h3 class="text-2xl md:text-3xl font-bold uppercase tracking-wide text-black">Paroles de gardiens</h3>
+                    <p class="text-base leading-loose text-gray-700">Écoutez les témoignages authentiques des gardiens qui ont participé à nos stages. Ils partagent leurs expériences, leurs motivations et ce qu'ils ont retiré de cette aventure.</p>
+                    <p class="text-base leading-loose text-gray-700">Découvrez leurs parcours, leurs défis personnels et comment le stage les a aidés à progresser tant sur le plan technique que mental.</p>
+                </div>
+                <div class="relative w-full" style="padding-bottom: 56.25%;">
+                    <iframe 
+                        src="https://player.vimeo.com/video/1141532634?title=0&byline=0&portrait=0" 
+                        frameborder="0" 
+                        allow="autoplay; fullscreen; picture-in-picture" 
+                        allowfullscreen
+                        class="absolute top-0 left-0 w-full h-full border-2 border-black"
+                        style="min-height: 400px;">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="bg-black text-white py-10 border-t border-white">
         <div class="max-w-7xl mx-auto px-5 text-center">
-            <div class="text-2xl font-bold tracking-wider mb-5">ONE<span class="text-black bg-white px-2 ml-1">GOAL</span></div>
+            <div class="mb-5">
+                <img src="../assets/images/onegoal_blanc.png" alt="OneGoal" class="h-12 md:h-14 object-contain mx-auto">
+            </div>
             <p>&copy; 2024 OneGoal. Tous droits réservés.</p>
         </div>
     </footer>

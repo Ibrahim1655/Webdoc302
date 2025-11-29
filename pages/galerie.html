@@ -34,26 +34,48 @@
             display: flex;
             transition: transform 0.8s ease-in-out;
         }
-        .carousel-item {
+        /* Carrousel Portrait */
+        .carousel-item-portrait {
             flex-shrink: 0;
             width: 300px;
-            height: auto;
-            aspect-ratio: 3/4;
+            height: 400px;
             margin-right: 20px;
             object-fit: cover;
         }
-        @keyframes autoScroll {
+        @keyframes autoScrollPortrait {
             0% {
                 transform: translateX(0);
             }
             100% {
-                transform: translateX(calc(-300px * 3 - 60px));
+                transform: translateX(calc(-320px * 9));
             }
         }
-        .carousel-track.auto-scroll {
-            animation: autoScroll 15s linear infinite;
+        .carousel-track-portrait.auto-scroll {
+            animation: autoScrollPortrait 20s linear infinite;
         }
-        .carousel-track.auto-scroll:hover {
+        .carousel-track-portrait.auto-scroll:hover {
+            animation-play-state: paused;
+        }
+        /* Carrousel Paysage */
+        .carousel-item-landscape {
+            flex-shrink: 0;
+            width: 500px;
+            height: 375px;
+            margin-right: 20px;
+            object-fit: cover;
+        }
+        @keyframes autoScrollLandscape {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(calc(-520px * 4));
+            }
+        }
+        .carousel-track-landscape.auto-scroll {
+            animation: autoScrollLandscape 25s linear infinite;
+        }
+        .carousel-track-landscape.auto-scroll:hover {
             animation-play-state: paused;
         }
     </style>
@@ -63,7 +85,9 @@
     <nav class="fixed top-0 w-full bg-white z-50 py-5 border-b border-black transition-shadow" id="navbar">
         <div class="max-w-7xl mx-auto px-5 flex justify-between items-center">
             <div class="text-2xl font-bold tracking-wider">
-                <a href="../index.html" class="no-underline text-black inline-block">ONE<span class="text-white bg-black px-2 ml-1">GOAL</span></a>
+                <a href="../index.html" class="no-underline text-black inline-block">
+                    <img src="../assets/images/logo.png" alt="OneGoal" class="h-14 md:h-16 object-contain">
+                </a>
             </div>
             <ul class="hidden md:flex list-none gap-8 flex-wrap">
                 <li><a href="../index.html" class="no-underline text-black font-medium uppercase text-sm tracking-wide relative hover:after:w-full after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-300">Accueil</a></li>
@@ -71,6 +95,7 @@
                 <li><a href="articles.html" class="no-underline text-black font-medium uppercase text-sm tracking-wide relative hover:after:w-full after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-300">Articles</a></li>
                 <li><a href="interview.html" class="no-underline text-black font-medium uppercase text-sm tracking-wide relative hover:after:w-full after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-300">Interview</a></li>
                 <li><a href="galerie.html" class="no-underline text-black font-medium uppercase text-sm tracking-wide relative hover:after:w-full after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-300">Galerie</a></li>
+                <li><a href="contexte.html" class="no-underline text-black font-medium uppercase text-sm tracking-wide relative hover:after:w-full after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-300">Contexte</a></li>
             </ul>
             <div class="md:hidden flex flex-col gap-1.5 cursor-pointer hamburger">
                 <span class="w-6 h-0.5 bg-black transition-all"></span>
@@ -83,6 +108,7 @@
                 <li><a href="articles.html" class="no-underline text-black font-medium uppercase text-sm tracking-wide">Articles</a></li>
                 <li><a href="interview.html" class="no-underline text-black font-medium uppercase text-sm tracking-wide">Interview</a></li>
                 <li><a href="galerie.html" class="no-underline text-black font-medium uppercase text-sm tracking-wide">Galerie</a></li>
+                <li><a href="contexte.html" class="no-underline text-black font-medium uppercase text-sm tracking-wide">Contexte</a></li>
             </ul>
         </div>
     </nav>
@@ -96,41 +122,72 @@
     </section>
 
     <!-- Galerie Section -->
-    <section class="py-24 min-h-screen flex flex-col justify-center bg-white">
+    <section class="py-24 min-h-screen flex flex-col justify-center bg-white space-y-16">
         <div class="max-w-7xl mx-auto px-5 w-full">
-            <div class="carousel-container border-2 border-black">
-                <div class="carousel-track auto-scroll" id="carouselTrack">
-                    <img src="../assets/images/fond1.jpg" alt="Image 1" class="carousel-item cursor-pointer gallery-item border-2 border-black object-cover">
-                    <img src="../assets/images/fond2.jpg" alt="Image 2" class="carousel-item cursor-pointer gallery-item border-2 border-black object-cover">
-                    <img src="../assets/images/fond3.jpg" alt="Image 3" class="carousel-item cursor-pointer gallery-item border-2 border-black object-cover">
-                    <!-- Dupliquer les images pour créer une boucle infinie -->
-                    <img src="../assets/images/fond1.jpg" alt="Image 1" class="carousel-item cursor-pointer gallery-item border-2 border-black object-cover">
-                    <img src="../assets/images/fond2.jpg" alt="Image 2" class="carousel-item cursor-pointer gallery-item border-2 border-black object-cover">
-                    <img src="../assets/images/fond3.jpg" alt="Image 3" class="carousel-item cursor-pointer gallery-item border-2 border-black object-cover">
+            <!-- Carrousel Portrait -->
+            <div class="mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold uppercase tracking-widest text-black mb-8 text-center">Focus</h2>
+                <div class="carousel-container border-2 border-black">
+                    <div class="carousel-track carousel-track-portrait auto-scroll" id="carouselPortrait">
+                        <img src="../assets/images/por1.jpg" alt="Portrait 1" class="carousel-item-portrait cursor-pointer gallery-item border-2 border-black">
+                        <img src="../assets/images/por2.jpg" alt="Portrait 2" class="carousel-item-portrait cursor-pointer gallery-item border-2 border-black">
+                        <img src="../assets/images/por3.jpg" alt="Portrait 3" class="carousel-item-portrait cursor-pointer gallery-item border-2 border-black">
+                        <img src="../assets/images/por4.jpg" alt="Portrait 4" class="carousel-item-portrait cursor-pointer gallery-item border-2 border-black">
+                        <img src="../assets/images/por5.jpg" alt="Portrait 5" class="carousel-item-portrait cursor-pointer gallery-item border-2 border-black">
+                        <img src="../assets/images/por6.jpg" alt="Portrait 6" class="carousel-item-portrait cursor-pointer gallery-item border-2 border-black">
+                        <img src="../assets/images/por7.jpg" alt="Portrait 7" class="carousel-item-portrait cursor-pointer gallery-item border-2 border-black">
+                        <img src="../assets/images/por8.jpg" alt="Portrait 8" class="carousel-item-portrait cursor-pointer gallery-item border-2 border-black">
+                        <img src="../assets/images/por9.jpg" alt="Portrait 9" class="carousel-item-portrait cursor-pointer gallery-item border-2 border-black">
+                        <!-- Dupliquer les images pour créer une boucle infinie -->
+                        <img src="../assets/images/por1.jpg" alt="Portrait 1" class="carousel-item-portrait cursor-pointer gallery-item border-2 border-black">
+                        <img src="../assets/images/por2.jpg" alt="Portrait 2" class="carousel-item-portrait cursor-pointer gallery-item border-2 border-black">
+                        <img src="../assets/images/por3.jpg" alt="Portrait 3" class="carousel-item-portrait cursor-pointer gallery-item border-2 border-black">
+                        <img src="../assets/images/por4.jpg" alt="Portrait 4" class="carousel-item-portrait cursor-pointer gallery-item border-2 border-black">
+                        <img src="../assets/images/por5.jpg" alt="Portrait 5" class="carousel-item-portrait cursor-pointer gallery-item border-2 border-black">
+                        <img src="../assets/images/por6.jpg" alt="Portrait 6" class="carousel-item-portrait cursor-pointer gallery-item border-2 border-black">
+                        <img src="../assets/images/por7.jpg" alt="Portrait 7" class="carousel-item-portrait cursor-pointer gallery-item border-2 border-black">
+                        <img src="../assets/images/por8.jpg" alt="Portrait 8" class="carousel-item-portrait cursor-pointer gallery-item border-2 border-black">
+                        <img src="../assets/images/por9.jpg" alt="Portrait 9" class="carousel-item-portrait cursor-pointer gallery-item border-2 border-black">
+                    </div>
                 </div>
             </div>
+
+            <!-- Carrousel Paysage -->
+            <div>
+                <h2 class="text-3xl md:text-4xl font-bold uppercase tracking-widest text-black mb-8 text-center">TERRAINS</h2>
+                <div class="carousel-container border-2 border-black">
+                    <div class="carousel-track carousel-track-landscape auto-scroll" id="carouselLandscape">
+                        <img src="../assets/images/pay1.jpg" alt="Paysage 1" class="carousel-item-landscape cursor-pointer gallery-item border-2 border-black">
+                        <img src="../assets/images/pay2.jpg" alt="Paysage 2" class="carousel-item-landscape cursor-pointer gallery-item border-2 border-black">
+                        <img src="../assets/images/pay3.jpg" alt="Paysage 3" class="carousel-item-landscape cursor-pointer gallery-item border-2 border-black">
+                        <img src="../assets/images/pay4.jpg" alt="Paysage 4" class="carousel-item-landscape cursor-pointer gallery-item border-2 border-black">
+                        <!-- Dupliquer les images pour créer une boucle infinie -->
+                        <img src="../assets/images/pay1.jpg" alt="Paysage 1" class="carousel-item-landscape cursor-pointer gallery-item border-2 border-black">
+                        <img src="../assets/images/pay2.jpg" alt="Paysage 2" class="carousel-item-landscape cursor-pointer gallery-item border-2 border-black">
+                        <img src="../assets/images/pay3.jpg" alt="Paysage 3" class="carousel-item-landscape cursor-pointer gallery-item border-2 border-black">
+                        <img src="../assets/images/pay4.jpg" alt="Paysage 4" class="carousel-item-landscape cursor-pointer gallery-item border-2 border-black">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lightbox -->
             <div class="hidden fixed z-[2000] left-0 top-0 w-full h-full bg-black/95 overflow-hidden items-center justify-center gallery-lightbox" id="lightbox">
                 <span class="absolute top-5 right-10 text-white text-6xl font-light cursor-pointer z-[2001] leading-none transition-colors duration-300 hover:text-gray-600 lightbox-close">&times;</span>
                 <span class="absolute top-1/2 left-5 transform -translate-y-1/2 text-white text-5xl font-light cursor-pointer z-[2001] p-5 transition-colors duration-300 hover:text-gray-600 select-none lightbox-prev">&#10094;</span>
                 <span class="absolute top-1/2 right-5 transform -translate-y-1/2 text-white text-5xl font-light cursor-pointer z-[2001] p-5 transition-colors duration-300 hover:text-gray-600 select-none lightbox-next">&#10095;</span>
                 <div class="relative max-w-[90%] max-h-[90%] flex items-center justify-center">
-                    <div class="max-w-full max-h-[90vh] border-2 border-white">
-                        <div class="w-full md:w-[800px] h-[600px] flex items-center justify-center">
-                            <div class="text-2xl font-light text-white tracking-widest">IMAGE</div>
-                        </div>
-                    </div>
+                    <img src="" alt="Image agrandie" class="max-w-full max-h-[90vh] object-contain border-2 border-white lightbox-image" id="lightbox-image">
                 </div>
             </div>
         </div>
     </section>
-    <div class="mb-20">
-         A SUPPRIMER , METTRE 2 CARROUSEL UN POUR LES IMG PORTRAIT ET UNNAUTRE POUR LES PAYSAGES , REDIMENSIOOJNNER LES IMG AU MEME FORMATS
-    </div >
 
     <!-- Footer -->
     <footer class="bg-black text-white py-10 border-t border-white">
         <div class="max-w-7xl mx-auto px-5 text-center">
-            <div class="text-2xl font-bold tracking-wider mb-5">ONE<span class="text-black bg-white px-2 ml-1">GOAL</span></div>
+            <div class="mb-5">
+                <img src="../assets/images/onegoal_blanc.png" alt="OneGoal" class="h-12 md:h-14 object-contain mx-auto">
+            </div>
             <p>&copy; 2024 OneGoal. Tous droits réservés.</p>
         </div>
     </footer>

@@ -37,6 +37,21 @@
         .scroll-arrow {
             animation: bounce 2s infinite;
         }
+        .audio-player {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 2px solid white;
+        }
+        .audio-player p {
+            color: black !important;
+        }
+        .audio-player audio {
+            width: 100%;
+            outline: none;
+        }
+        .audio-player audio::-webkit-media-controls-panel {
+            background-color: rgba(255, 255, 255, 0.9);
+        }
     </style>
 </head>
 <body class="font-sans text-black bg-white overflow-x-hidden">
@@ -44,7 +59,9 @@
     <nav class="fixed top-0 w-full bg-white z-50 py-5 border-b border-black transition-shadow" id="navbar">
         <div class="max-w-7xl mx-auto px-5 flex justify-between items-center">
             <div class="text-2xl font-bold tracking-wider">
-                <a href="index.html" class="no-underline text-black inline-block">ONE<span class="text-white bg-black px-2 ml-1">GOAL</span></a>
+                <a href="index.html" class="no-underline text-black inline-block">
+                    <img src="assets/images/logo.png" alt="OneGoal" class="h-14 md:h-16 object-contain">
+                </a>
             </div>
             <ul class="hidden md:flex list-none gap-8 flex-wrap">
                 <li><a href="index.html" class="no-underline text-black font-medium uppercase text-sm tracking-wide relative hover:after:w-full after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-300">Accueil</a></li>
@@ -52,6 +69,7 @@
                 <li><a href="pages/articles.html" class="no-underline text-black font-medium uppercase text-sm tracking-wide relative hover:after:w-full after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-300">Articles</a></li>
                 <li><a href="pages/interview.html" class="no-underline text-black font-medium uppercase text-sm tracking-wide relative hover:after:w-full after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-300">Interview</a></li>
                 <li><a href="pages/galerie.html" class="no-underline text-black font-medium uppercase text-sm tracking-wide relative hover:after:w-full after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-300">Galerie</a></li>
+                <li><a href="pages/contexte.html" class="no-underline text-black font-medium uppercase text-sm tracking-wide relative hover:after:w-full after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-300">Contexte</a></li>
             </ul>
             <div class="md:hidden flex flex-col gap-1.5 cursor-pointer hamburger">
                 <span class="w-6 h-0.5 bg-black transition-all"></span>
@@ -64,6 +82,7 @@
                 <li><a href="pages/articles.html" class="no-underline text-black font-medium uppercase text-sm tracking-wide">Articles</a></li>
                 <li><a href="pages/interview.html" class="no-underline text-black font-medium uppercase text-sm tracking-wide">Interview</a></li>
                 <li><a href="pages/galerie.html" class="no-underline text-black font-medium uppercase text-sm tracking-wide">Galerie</a></li>
+                <li><a href="pages/contexte.html" class="no-underline text-black font-medium uppercase text-sm tracking-wide">Contexte</a></li>
             </ul>
         </div>
     </nav>
@@ -102,10 +121,57 @@
         </div>
     </section>
 
+    <!-- Webdocumentaire Section -->
+    <section class="py-32 relative bg-black border-t-2 border-white overflow-hidden">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 opacity-20" style="background-image: url('assets/images/fond3.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;"></div>
+        <div class="absolute inset-0 bg-black/60"></div>
+        
+        <div class="max-w-7xl mx-auto px-5 relative z-10">
+            <div class="mb-20 text-center">
+                <div class="flex items-center justify-center gap-5 mb-8">
+                    <span class="text-5xl md:text-7xl font-black text-white/30 leading-none">02</span>
+                    <h2 class="text-3xl md:text-5xl font-black uppercase tracking-widest text-white">WEBDOCUMENTAIRE</h2>
+                </div>
+                <p class="text-lg md:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
+                    Plongez dans l'univers des gardiens de but. Une immersion au cœur de leur passion, de leurs défis et de leur quête d'excellence.
+                </p>
+            </div>
+            
+            <div class="max-w-6xl mx-auto">
+                <div class="relative w-full shadow-2xl" style="padding-bottom: 56.25%;">
+                    <div class="absolute inset-0 border-4 border-white shadow-[0_0_30px_rgba(255,255,255,0.3)]"></div>
+                    <iframe 
+                        src="https://player.vimeo.com/video/1141528959?title=0&byline=0&portrait=0&color=ffffff" 
+                        frameborder="0" 
+                        allow="autoplay; fullscreen; picture-in-picture" 
+                        allowfullscreen
+                        class="absolute top-0 left-0 w-full h-full"
+                        style="min-height: 500px;">
+                    </iframe>
+                </div>
+            </div>
+            
+            <!-- Audio Player -->
+            <div class="mt-16 max-w-2xl mx-auto">
+                <div class="audio-player p-6 rounded-sm">
+                    <p class="text-sm uppercase tracking-widest text-black mb-4 text-center">L'écho des crampons</p>
+                    <audio controls preload="metadata" class="w-full">
+                        <source src="assets/images/VOC.mp4" type="audio/mp4">
+                        <source src="assets/images/VOC.mp4" type="audio/mpeg">
+                        Votre navigateur ne supporte pas l'élément audio.
+                    </audio>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="bg-black text-white py-10 border-t border-white">
         <div class="max-w-7xl mx-auto px-5 text-center">
-            <div class="text-2xl font-bold tracking-wider mb-5">ONE<span class="text-black bg-white px-2 ml-1">GOAL</span></div>
+            <div class="mb-5">
+                <img src="assets/images/onegoal_blanc.png" alt="OneGoal" class="h-12 md:h-14 object-contain mx-auto">
+            </div>
             <p>&copy; 2024 OneGoal. Tous droits réservés.</p>
         </div>
     </footer>

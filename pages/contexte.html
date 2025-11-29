@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contexte - OneGoal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Helvetica Neue', 'Arial', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        .nav-menu.active {
+            left: 0;
+        }
+    </style>
+</head>
+<body class="font-sans text-black bg-white overflow-x-hidden">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white z-50 py-5 border-b border-black transition-shadow" id="navbar">
+        <div class="max-w-7xl mx-auto px-5 flex justify-between items-center">
+            <div class="text-2xl font-bold tracking-wider">
+                <a href="../index.html" class="no-underline text-black inline-block">
+                    <img src="../assets/images/logo.png" alt="OneGoal" class="h-14 md:h-16 object-contain">
+                </a>
+            </div>
+            <ul class="hidden md:flex list-none gap-8 flex-wrap">
+                <li><a href="../index.html" class="no-underline text-black font-medium uppercase text-sm tracking-wide relative hover:after:w-full after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-300">Accueil</a></li>
+                <li><a href="stage.html" class="no-underline text-black font-medium uppercase text-sm tracking-wide relative hover:after:w-full after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-300">Le Stage</a></li>
+                <li><a href="articles.html" class="no-underline text-black font-medium uppercase text-sm tracking-wide relative hover:after:w-full after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-300">Articles</a></li>
+                <li><a href="interview.html" class="no-underline text-black font-medium uppercase text-sm tracking-wide relative hover:after:w-full after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-300">Interview</a></li>
+                <li><a href="galerie.html" class="no-underline text-black font-medium uppercase text-sm tracking-wide relative hover:after:w-full after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-300">Galerie</a></li>
+                <li><a href="contexte.html" class="no-underline text-black font-medium uppercase text-sm tracking-wide relative hover:after:w-full after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-300">Contexte</a></li>
+            </ul>
+            <div class="md:hidden flex flex-col gap-1.5 cursor-pointer hamburger">
+                <span class="w-6 h-0.5 bg-black transition-all"></span>
+                <span class="w-6 h-0.5 bg-black transition-all"></span>
+                <span class="w-6 h-0.5 bg-black transition-all"></span>
+            </div>
+            <ul class="fixed left-[-100%] top-[70px] flex-col bg-white w-full text-center transition-all duration-300 border-t border-black py-5 gap-5 nav-menu md:hidden">
+                <li><a href="../index.html" class="no-underline text-black font-medium uppercase text-sm tracking-wide">Accueil</a></li>
+                <li><a href="stage.html" class="no-underline text-black font-medium uppercase text-sm tracking-wide">Le Stage</a></li>
+                <li><a href="articles.html" class="no-underline text-black font-medium uppercase text-sm tracking-wide">Articles</a></li>
+                <li><a href="interview.html" class="no-underline text-black font-medium uppercase text-sm tracking-wide">Interview</a></li>
+                <li><a href="galerie.html" class="no-underline text-black font-medium uppercase text-sm tracking-wide">Galerie</a></li>
+                <li><a href="contexte.html" class="no-underline text-black font-medium uppercase text-sm tracking-wide">Contexte</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="pt-36 pb-20 bg-white text-center border-b-2 border-black">
+        <div class="max-w-7xl mx-auto px-5">
+            <h1 class="text-5xl md:text-7xl font-black tracking-widest uppercase mb-5 text-black">CONTEXTE</h1>
+            <p class="text-xl md:text-2xl font-light tracking-widest text-gray-600">Les chiffres du football français</p>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="py-24 min-h-screen flex flex-col justify-center bg-white">
+        <div class="max-w-7xl mx-auto px-5">
+            <div class="grid md:grid-cols-2 gap-12 mb-20">
+                <!-- Information Panel -->
+                <div class="border-2 border-black bg-gray-50 p-8">
+                    <h2 class="text-3xl md:text-4xl font-bold uppercase tracking-widest text-black mb-8">INFORMATION</h2>
+                    <ul class="space-y-6 text-gray-700 leading-relaxed">
+                        <li class="flex items-start">
+                            <span class="text-black font-bold mr-3">•</span>
+                            <div>
+                                <span class="font-semibold">Total des licences :</span> 2,3 millions de licences en 2023-2024, soit une augmentation de <span class="font-bold text-black">+8,7%</span> par rapport à la saison précédente.
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-black font-bold mr-3">•</span>
+                            <div>
+                                <span class="font-semibold">Licences masculines :</span> Environ <span class="font-bold text-black">2 060 960</span> licences masculines, en hausse de <span class="font-bold text-black">+8,3%</span>.
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-black font-bold mr-3">•</span>
+                            <div>
+                                <span class="font-semibold">Licences féminines :</span> Environ <span class="font-bold text-black">239 886</span> licences féminines, en hausse de <span class="font-bold text-black">+12,6%</span>, un <span class="font-bold text-black">record pour le football féminin</span>.
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-black font-bold mr-3">•</span>
+                            <div>
+                                <span class="font-semibold">Part du football :</span> Le football représente environ <span class="font-bold text-black">14%</span> de l'ensemble des licenciés sportifs en France (tous sports confondus).
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-black font-bold mr-3">•</span>
+                            <div>
+                                <span class="font-semibold">Données Seine-et-Marne :</span> En Seine-et-Marne, le football domine avec plus de <span class="font-bold text-black">49 100</span> licenciés pour l'année 2024.
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Representation Panel -->
+                <div class="border-2 border-black bg-black text-white p-8">
+                    <h2 class="text-3xl md:text-4xl font-bold uppercase tracking-widest mb-8">REPRÉSENTATION</h2>
+                    <div class="space-y-10">
+                        <!-- Total Licenses -->
+                        <div class="border-b border-white/20 pb-6">
+                            <div class="text-6xl md:text-7xl font-black mb-2">2 300 000</div>
+                            <p class="text-sm uppercase tracking-widest text-gray-300 mb-3">Licenciés en 2023-2024</p>
+                            <div class="flex items-center gap-2">
+                                <span class="text-2xl">↑</span>
+                                <span class="text-2xl font-bold">8,7%</span>
+                            </div>
+                            <p class="text-xs text-gray-400 mt-1">Par rapport à la saison précédente</p>
+                        </div>
+
+                        <!-- Male Licenses -->
+                        <div class="border-b border-white/20 pb-6">
+                            <div class="text-5xl md:text-6xl font-black mb-2">2 060 960</div>
+                            <p class="text-sm uppercase tracking-widest text-gray-300 mb-3">Licences masculines en 23-24</p>
+                            <div class="flex items-center gap-2">
+                                <span class="text-2xl">↑</span>
+                                <span class="text-2xl font-bold">8,3%</span>
+                            </div>
+                            <p class="text-xs text-gray-400 mt-1">Par rapport à la saison précédente</p>
+                        </div>
+
+                        <!-- Female Licenses -->
+                        <div class="border-b border-white/20 pb-6">
+                            <div class="text-5xl md:text-6xl font-black mb-2">239 886</div>
+                            <p class="text-sm uppercase tracking-widest text-gray-300 mb-3">Licences féminines en 23-24</p>
+                            <p class="text-xs text-gray-400 mb-2 italic">Record pour le football féminin</p>
+                            <div class="flex items-center gap-2">
+                                <span class="text-2xl">↑</span>
+                                <span class="text-2xl font-bold">12,6%</span>
+                            </div>
+                            <p class="text-xs text-gray-400 mt-1">Par rapport à la saison précédente</p>
+                        </div>
+
+                        <!-- Seine-et-Marne -->
+                        <div>
+                            <div class="text-5xl md:text-6xl font-black mb-2">49 100</div>
+                            <p class="text-sm uppercase tracking-widest text-gray-300">Licences en Seine-et-Marne en 2024</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Context -->
+            <div class="border-2 border-black bg-white p-8 mt-12">
+                <h3 class="text-2xl md:text-3xl font-bold uppercase tracking-widest text-black mb-6">ANALYSE</h3>
+                <div class="grid md:grid-cols-2 gap-8 text-gray-700 leading-relaxed">
+                    <div>
+                        <p class="mb-4">Le football français connaît une croissance remarquable, avec une augmentation globale de 8,7% des licenciés. Cette dynamique positive témoigne de l'attractivité croissante du sport le plus populaire de France.</p>
+                        <p>La progression du football féminin est particulièrement notable, avec une hausse de 12,6%, établissant un nouveau record historique. Cette évolution reflète les efforts continus pour développer et promouvoir le football féminin à tous les niveaux.</p>
+                    </div>
+                    <div>
+                        <p class="mb-4">Avec 14% de l'ensemble des licenciés sportifs en France, le football confirme sa position dominante dans le paysage sportif français. Cette part significative illustre l'ancrage profond du football dans la culture sportive nationale.</p>
+                        <p>En Seine-et-Marne, la prédominance du football est évidente avec plus de 49 100 licenciés, démontrant l'importance de ce sport dans les départements d'Île-de-France et son rôle central dans la vie sportive locale.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-10 border-t border-white">
+        <div class="max-w-7xl mx-auto px-5 text-center">
+            <div class="mb-5">
+                <img src="../assets/images/onegoal_blanc.png" alt="OneGoal" class="h-12 md:h-14 object-contain mx-auto">
+            </div>
+            <p>&copy; 2024 OneGoal. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>
+
